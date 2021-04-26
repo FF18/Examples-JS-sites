@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Example of work AJAX</title>
+  </head>
+  <body>
+    <h1>Example of work AJAX</h1>
+    <div>
+      <a
+        href="https://itchief.ru/lessons/javascript/ajax-asynchronous-requests-in-the-examples"
+        target="_blank"
+        >JavaScript - Асинхронные AJAX запросы на примерах</a
+      >
+    </div>
+    <div id="Welcom"></div>
+    <script src="script.js">
+      window.addEventListener("load", function() {
+        let request = new XMLHttpRequest();
+        request.open('GET', 'processing.php', true);
+        request.addEventListener('readystatechange', function () {
+          if (request.readyState == 4 && request.status == 200) {
+            let welcome = document.getElementById('welcome');
+            welcome.innerHTML = request.responseText;
+          }
+        });
+        request.send();
+      })
+    </script>
+  </body>
+</html>
